@@ -1,0 +1,253 @@
+[Header]
+Format=SMU
+ver=3
+appl=GUMWB32
+MR=0
+SUR=0
+SUP=0
+UIP=1
+UCR=0
+status=2
+FUEB=0
+SV=0
+SP=0
+
+[Title]
+Title='MU-Beispiel 3'
+Ref='Kurs FK'
+Date='01/29/2020'
+Version='0.92'
+Author='BEV'
+Description=1
+Description[0]='Kalibrierung eines Gaszählers. Normal ist der Gaskubizierer des BEV'
+PictureCount=1
+PictureCaption='Skize des Messprinzips'
+PictureHeight=15187
+PictureWidth=15240
+PictureFA=1
+PictureFormat='PNG'
+PictureData='Picture 1'
+PictureCoding=BASE64
+PictureAlignment=2
+
+[Model]
+Model=8
+Model[0]='{Die tatsächlich über den Prüfling abgegebene Luftmenge wird über die ideale Gasgleichung modelliert}'
+Model[1]='V_Pr = V_N * (p_N+p_Umg)/(p_Pr+p_Umg) *(T_Pr+T_0)/(T_N+T_0);'
+Model[2]=''
+Model[3]='{Die Lesung des Prüflings ist ein zweistufiger Prozess}'
+Model[4]='V_PrA = V_PrStop - V_PrStart;'
+Model[5]=''
+Model[6]='{Das Messergebnis wird als relative Messabwechung modelliert}'
+Model[7]='y = (V_PrA - V_Pr) / V_Pr * S;'
+CE=1
+CTC=1
+
+[Components]
+CompOrder=0
+Comp=13
+Comp[0]=y
+Comp[1]=p_N_
+Comp[2]=p_Pr_
+Comp[3]=p_Umg_
+Comp[4]=T_N_
+Comp[5]=V_N_
+Comp[6]=V_PrStart_
+Comp[7]=V_PrStop_
+Comp[8]=T_Pr_
+Comp[9]=V_Pr_
+Comp[10]=V_PrA_
+Comp[11]=S
+Comp[12]=T_0_
+
+[COMP 0]
+Type=Result
+Definition='Relative Anzeigenabweichung des Prüflings bezogen auf das durchgeflossene Volumen'
+Unit='%'
+Description=1
+Description[0]='Der Messwert im Sinne des GUM.'
+Fcov=2
+NomUnit=
+UncUnit=
+CovID=12
+UncID=0
+Vnom=-0.634996971492078
+Ustd=0.0695688730093665
+Neff=189
+HB=1
+HC=0
+HR=1
+IO=0
+
+[COMP 1]
+Type=TypBNormal
+Definition='Überdruck im Normal'
+Unit='hPa'
+Description=2
+Description[0]='Flüssigkeitsmanometer, MM003893, Kalibrierschein E17-0572 ACHTUNG: sollte über'
+Description[1]='mindestens zwei Eingangsgrößen modelliert werden!'
+Vnom=19,8
+Uexp=0,6
+Fcov=1
+
+[COMP 2]
+Type=TypBNormal
+Definition='Überdruck im Prüfling'
+Unit='hPa'
+Description=2
+Description[0]='Digtalmanometer, MM002078, Kalibrierschein E19-1503/2 ACHTUNG: sollte über'
+Description[1]='mindestens zwei Eingangsgrößen modelliert werden!'
+Vnom=19,75
+Uexp=0,08
+Fcov=1
+
+[COMP 3]
+Type=TypBNormal
+Definition='Barometrischer Luftdruck'
+Unit='hPa'
+Description=2
+Description[0]='Päzisionsaneroid-Barometer MM002062, Kalibrierschein E18-0186/1 ACHTUNG: sollte'
+Description[1]='über mindestens zwei Eingangsgrößen modelliert werden!'
+Vnom=990,2
+Uexp=0,8
+Fcov=1
+
+[COMP 4]
+Type=TypBNormal
+Definition='Lufttemperatur im Normal'
+Unit='°C'
+Description=3
+Description[0]='Aus Kalibrierschein bla bla Hier fehlt die UNsicherheit der eigentlichen'
+Description[1]='Temperaturmessung! ACHTUNG: sollte über mindestens zwei Eingangsgrößen'
+Description[2]='modelliert werden!'
+Vnom=22,1
+Uexp=0,06
+Fcov=2
+
+[COMP 5]
+Type=TypBNormal
+Definition='Volumen des Normals (Kubizierer)'
+Unit='m^3'
+Description=2
+Description[0]='Hier ist lediglich der Wert aus einen (gedachten) Kalibrierschein angegeben!'
+Description[1]='ACHTUNG: sollte über mindestens zwei Eingangsgrößen modelliert werden!'
+Vnom=0,503
+Uexp=0,00005
+Fcov=2
+
+[COMP 6]
+Type=TypBNormal
+Definition='Angezeigter Wert zu Beginn der Kalibrierung'
+Unit='m^3'
+Description=3
+Description[0]='Zählwertanzeige, Teilungswert 0,2 L, Ein erfahrener Benutzer kann eine'
+Description[1]='Unsicherheit von 0,1 L'
+Description[2]='erreichen.'
+Vnom=321,0
+Uexp=0,0001
+Fcov=1
+
+[COMP 7]
+Type=TypBNormal
+Definition='Angezeigter Wert am Ende der Kalibrierung'
+Unit='m^3'
+Description=3
+Description[0]='Zählwertanzeige, Teilungswert 0,2 L, Ein erfahrener Benutzer kann eine'
+Description[1]='Unsicherheit von 0,1 L'
+Description[2]='erreichen.'
+Vnom=321,500
+Uexp=0,0001
+Fcov=1
+
+[COMP 8]
+Type=TypBRectang
+Definition='Lufttemperatur im Prüfling'
+Unit='°C'
+Description=3
+Description[0]='Quick and dirty aus einen (gedachten) Prüfungsschein Auch hier fehlt die'
+Description[1]='Unsicherheit der eigentlichen Temperaturmessung! ACHTUNG: sollte über'
+Description[2]='mindestens zwei Eingangsgrößen modelliert werden!'
+Vnom=22,2
+Hlim=0,1
+
+[COMP 9]
+Type=Temp
+Definition='Durchgeflossenes Volumen'
+Unit='m^3'
+Description=0
+Fcov=2
+NomUnit=
+UncUnit=
+CovID=12
+UncID=0
+Vnom=0.503195274755388
+Ustd=0.000322276109201053
+Neff=136
+HB=0
+HC=0
+HR=0
+IO=0
+
+[COMP 10]
+Type=Temp
+Definition='Angezeigtes Volumen'
+Unit='m^3'
+Description=1
+Description[0]='Differenz aus Start- und Stopp-Wert'
+Fcov=2
+NomUnit=
+UncUnit=
+CovID=12
+UncID=0
+Vnom=0.5
+Ustd=0.000141421356237294
+Neff=202
+HB=0
+HC=0
+HR=0
+IO=0
+
+[COMP 11]
+Type=Const
+Definition='Skalenfaktor zur Umrechnung in Prozent'
+Unit='%'
+Description=3
+Description[0]='Dies ist die Methode mit diesen Programm eine Anzeige in %'
+Description[1]='zu erhalten. Das Zeichen muss aus Dimensionsgründen sowohl bei dieser Konstante'
+Description[2]='als auch beim Ergebnis als Einheit angegeben werden.'
+Vnom=100
+
+[COMP 12]
+Type=Const
+Definition='Celsius/Kelvin-Ursprung'
+Unit='°C'
+Description=1
+Description[0]='Zur Umrechnung von Celsius in Kelvin-Temperaturwerten'
+Vnom=273,15
+
+[Correlations]
+Description=0
+
+[CalCorr]
+CNT=16
+R[9,0]=-0.9147663
+R[10,0]=0.4039834
+R[0,1]=-0.8484935
+R[0,6]=-0.2856594
+R[0,7]=0.2856594
+R[0,8]=-0.2792035
+R[0,4]=0.1451275
+R[0,2]=0.113138
+R[0,5]=-0.0709889
+R[9,1]=0.9275521
+R[9,8]=0.3052185
+R[9,4]=-0.1586499
+R[9,2]=-0.1236797
+R[9,5]=0.0776033
+R[10,6]=-0.7071068
+R[10,7]=0.7071068
+
+[Diagrams]
+Version=1.0
+Count=0
+
